@@ -1,0 +1,14 @@
+../../../chavacava/github/deleteme/cockroach/pkg/sql/colexec/colexechash/hash.go:158:7: expression always evaluates to false
+../../../chavacava/github/deleteme/cockroach/pkg/ccl/changefeedccl/kvfeed/kv_feed.go:650:9: both branches of the if are identical
+../../../chavacava/github/deleteme/cockroach/pkg/util/interval/btree_based_interval_test.go:333:4: unreachable code after this statement
+../../../chavacava/github/deleteme/cockroach/pkg/util/num32/scalar.go:38:9: expression always evaluates to false
+../../../chavacava/github/deleteme/cockroach/pkg/workload/workloadimpl/zipfgenerator_test.go:117:4: unreachable code after this statement
+../../../chavacava/github/deleteme/cockroach/pkg/workload/workload_generator/run_utils.go:95:2: inefficient lookup of map key
+../../../chavacava/github/deleteme/cockroach/pkg/workload/workload_generator/run_utils.go:101:3: inefficient lookup of map key
+../../../chavacava/github/deleteme/cockroach/pkg/internal/sqlsmith/alter.go:210:9: "if...else if" chain with identical conditions (lines 200 and 210)
+../../../chavacava/github/deleteme/cockroach/pkg/ccl/changefeedccl/changefeed_test.go:5220:5: both branches of the if are identical
+../../../chavacava/github/deleteme/cockroach/pkg/cmd/roachtest/tests/awsdms.go:471:9: unreachable code after this statement
+../../../chavacava/github/deleteme/cockroach/pkg/cmd/roachtest/tests/awsdms.go:479:6: unreachable code after this statement
+../../../chavacava/github/deleteme/cockroach/pkg/server/api_v2_sql.go:207:4: tag on not-exported field stmt
+../../../chavacava/github/deleteme/cockroach/pkg/sql/create_test.go:96:4: unreachable code after this statement
+../../../chavacava/github/deleteme/cockroach/pkg/sql/sql_activity_update_job_test.go:604:31: option can not be empty in json tag
