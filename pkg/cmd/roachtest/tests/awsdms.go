@@ -468,16 +468,16 @@ func checkFullLargeDataLoad(ctx context.Context, t test.Test, dmsCli *dms.Client
 							nonUpdate++
 							// Arbitrarily picked 5 consecutive non updates to indicate stuck progress
 							if nonUpdate == 5 {
-								t.Fatal(errors.New("replication progress appears to be stuck"))
 								close(closer)
+								t.Fatal(errors.New("replication progress appears to be stuck"))
 							}
 						}
 					}
 				} else {
 					// All other statuses should result in a failure
 					t.L().Printf("unexpeted task status %s", *task.Status)
-					t.Fatal("unexpected task status")
 					close(closer)
+					t.Fatal("unexpected task status")
 				}
 			}
 			return nil
