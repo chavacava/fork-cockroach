@@ -3948,16 +3948,6 @@ func (m *RecoveryEvent) AppendJSONFields(printComma bool, b redact.RedactableByt
 		b = strconv.AppendUint(b, uint64(m.TargetCount), 10)
 	}
 
-	if m.DestinationSubdirType != "" {
-		if printComma {
-			b = append(b, ',')
-		}
-		printComma = true
-		b = append(b, "\"DestinationSubdirType\":\""...)
-		b = redact.RedactableBytes(jsonbytes.EncodeString([]byte(b), string(m.DestinationSubdirType)))
-		b = append(b, '"')
-	}
-
 	if len(m.DestinationStorageTypes) > 0 {
 		if printComma {
 			b = append(b, ',')
@@ -3999,15 +3989,6 @@ func (m *RecoveryEvent) AppendJSONFields(printComma bool, b redact.RedactableByt
 		printComma = true
 		b = append(b, "\"IsLocalityAware\":"...)
 		b = strconv.AppendBool(b, m.IsLocalityAware)
-	}
-
-	if m.AsOfInterval != 0 {
-		if printComma {
-			b = append(b, ',')
-		}
-		printComma = true
-		b = append(b, "\"AsOfInterval\":"...)
-		b = strconv.AppendInt(b, int64(m.AsOfInterval), 10)
 	}
 
 	if m.WithRevisionHistory {
@@ -4062,16 +4043,6 @@ func (m *RecoveryEvent) AppendJSONFields(printComma bool, b redact.RedactableByt
 			b = append(b, '"')
 		}
 		b = append(b, ']')
-	}
-
-	if m.DebugPauseOn != "" {
-		if printComma {
-			b = append(b, ',')
-		}
-		printComma = true
-		b = append(b, "\"DebugPauseOn\":\""...)
-		b = redact.RedactableBytes(jsonbytes.EncodeString([]byte(b), string(m.DebugPauseOn)))
-		b = append(b, '"')
 	}
 
 	if m.JobID != 0 {
@@ -4130,26 +4101,6 @@ func (m *RecoveryEvent) AppendJSONFields(printComma bool, b redact.RedactableByt
 		printComma = true
 		b = append(b, "\"CustomFirstRunTime\":"...)
 		b = strconv.AppendInt(b, int64(m.CustomFirstRunTime), 10)
-	}
-
-	if m.OnExecutionFailure != "" {
-		if printComma {
-			b = append(b, ',')
-		}
-		printComma = true
-		b = append(b, "\"OnExecutionFailure\":\""...)
-		b = redact.RedactableBytes(jsonbytes.EncodeString([]byte(b), string(m.OnExecutionFailure)))
-		b = append(b, '"')
-	}
-
-	if m.OnPreviousRunning != "" {
-		if printComma {
-			b = append(b, ',')
-		}
-		printComma = true
-		b = append(b, "\"OnPreviousRunning\":\""...)
-		b = redact.RedactableBytes(jsonbytes.EncodeString([]byte(b), string(m.OnPreviousRunning)))
-		b = append(b, '"')
 	}
 
 	if m.IgnoreExistingBackup {
@@ -6047,6 +5998,18 @@ func (m *StatusChange) AppendJSONFields(printComma bool, b redact.RedactableByte
 		b = append(b, "\"FinalResumeErr\":\""...)
 		b = append(b, redact.StartMarker()...)
 		b = redact.RedactableBytes(jsonbytes.EncodeString([]byte(b), string(redact.EscapeMarkers([]byte(m.FinalResumeErr)))))
+		b = append(b, redact.EndMarker()...)
+		b = append(b, '"')
+	}
+
+	if m.User != "" {
+		if printComma {
+			b = append(b, ',')
+		}
+		printComma = true
+		b = append(b, "\"User\":\""...)
+		b = append(b, redact.StartMarker()...)
+		b = redact.RedactableBytes(jsonbytes.EncodeString([]byte(b), string(redact.EscapeMarkers([]byte(m.User)))))
 		b = append(b, redact.EndMarker()...)
 		b = append(b, '"')
 	}
