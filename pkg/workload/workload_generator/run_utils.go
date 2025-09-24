@@ -92,18 +92,18 @@ func setNullType(placeholder Placeholder) interface{} {
 // If yes, then returns that table name. otherwise looks for a table with that column and returns that.
 func getTableName(p Placeholder, d *workloadGenerator) string {
 	block := d.workloadSchema[p.TableName]
-	for colName := range block.Columns {
-		if colName == p.Name {
-			return p.TableName
-		}
+	_, ok := block.Columns[p.Name]
+	if ok {
+		return p.TableName
 	}
+
 	for tableName, blk := range d.workloadSchema {
-		for colName := range blk.Columns {
-			if colName == p.Name {
-				return tableName
-			}
+		_, ok := blk.Columns[p.Name]
+		if ok {
+			return tableName
 		}
 	}
+
 	return p.TableName
 }
 
